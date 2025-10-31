@@ -9,7 +9,7 @@ SYSAUDITOR_PWD=${SYSAUDITOR_PWD:-DMauditor_123}
 
 check_init_status() {
   declare -g DM_INITIALIZED
-  if [ -n "$(find ${DM_DATA_DIR} -maxdepth 1 -type d)" ]; then
+  if [ -d "${DM_DATA_DIR}/${DEFAULT_DB_NAME}" ] && [ -f "${DM_DATA_DIR}/${DEFAULT_DB_NAME}/dm.ini" ]; then
     DM_INITIALIZED='true'
   fi
 }
@@ -29,7 +29,8 @@ EOF
 }
 
 default_db_init() {
-  generate_init_ini()
+  generate_init_ini
+  chmod +x ${DM_INSTALL_DIR}/bin/dminit
   ${DM_INSTALL_DIR}/bin/dminit CONTROL=${DM_INSTALL_DIR}/default_db_init.ini
 }
 
@@ -39,7 +40,8 @@ if [ -z "${DM_INITIALIZED}" ];then
 fi
 
 if [ $# -eq 0 ]; then
-    exec ${DM_INSTALL_DIR}/bin/dmserver", "${DM_DATA_DIR}/${DEFAULT_DB_NAME}/dm.ini
+    chmod +x ${DM_INSTALL_DIR}/bin/dmserver
+    exec ${DM_INSTALL_DIR}/bin/dmserver ${DM_DATA_DIR}/${DEFAULT_DB_NAME}/dm.ini
 else
     exec "$@"
 fi

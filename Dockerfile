@@ -48,7 +48,8 @@ FROM base
 
 COPY --from=install $DM_INSTALL_DIR $DM_INSTALL_DIR
 COPY --from=install $DM_DATA_DIR $DM_DATA_DIR
-COPY docker-entrypoint.sh /docker-entrypoint.sh
+COPY docker-entrypoint.sh /
+RUN chmod +x /docker-entrypoint.sh
 
 USER dmdba
 
