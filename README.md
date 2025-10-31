@@ -30,3 +30,8 @@ docker run -d --name dm8 -p 5236:5236 \
 > 1. `CASE_SENSITIVE`区分大小写，默认值`Y`
 > 1. `SYSDBA_PWD`SYSDBA用户的密码，默认值`DMdba_123`
 > 1. `SYSAUDITOR_PWD`SYSAUDITOR用户的密码，默认值`DMauditor_123`
+
+## 官方配置文档
+https://eco.dameng.com/document/dm/zh-cn/start/install-dm-linux-prepare.html
+https://eco.dameng.com/document/dm/zh-cn/pm/dminit-function-introduction.html
+https://eco.dameng.com/document/dm/zh-cn/pm/dm8-appendix.html#5.2%20%E9%9D%99%E9%BB%98%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E6%A8%A1%E6%9D%BF
